@@ -90,4 +90,4 @@ sw.*
 *.swp
 
 #Firebase
-plugins/firebase.js
+firebase.js
