@@ -5,6 +5,7 @@
       <img :src="preview" />
     </div>
     <button @click="sendImage">Upload</button>
+    <button @click="getImage">Get</button>
   </div>
 </template>
 
@@ -36,6 +37,17 @@ export default {
       storageRef.put(this.image)
       .then(res => alert("画像を送信しました"))
       .catch(e => alert("画像の送信ができませんでした"))
+    },
+    getImage () {
+      const storage = firebase.storage();
+      const storageRef = storage.ref().child("image");
+      storageRef.getDownloadURL()
+      .then(res => {
+        console.log("画像データを取得しました",res);
+      })
+      .catch(e => {
+        console.log("画像データを取得できませんでした",e);
+      })
     }
   },
 }
